@@ -6,4 +6,4 @@ author_profile: true
 ---
 
 
-- [temp](http://qiuliyang.github.io/docs/temp.pdf)
+- [temp](http://qiuliyang.github.io/files/temp.pdf)

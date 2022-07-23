@@ -13,6 +13,6 @@ main:
     url: "/#-educations"
     
   - title: "Notes"
-    url: "/notes/"
+    url: "/#-notes/"
 
 

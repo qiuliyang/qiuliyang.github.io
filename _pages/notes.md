@@ -1,5 +1,5 @@
 ---
-permalink: /notes
+permalink: /
 title: "Notes"
 excerpt: ""
 author_profile: true

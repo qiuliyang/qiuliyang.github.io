@@ -7,7 +7,7 @@
 
 # Site Settings
 title                    : "Liyang Qiu"
-description              : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. "
+description              : "Research asscociate in Fudan University. Graduating from Fudan Universtiy. Focusing on quantum optics, quantum control and atomic physics."
 repository               : "qiuliyang/qiuliyang.github.io"
 google_scholar_stats_use_cdn : true
 
@@ -22,7 +22,7 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 # Site Author
 author:
   name             : "Liyang Qiu"
-  avatar           : "images/android-chrome-512x512.png"
+  avatar           : "images/portrait.png"
   bio              : "Lorem ipsum College"
   location         : "Shanghai, China"
   employer         :

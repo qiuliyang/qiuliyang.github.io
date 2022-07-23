@@ -1,11 +1,9 @@
 ---
-permalink: /
+layout: archive
+permalink: /notes/
 title: "Notes"
 excerpt: ""
 author_profile: true
-redirect_from: 
-  - /notes/
-  - /notes.html
 ---
 
 

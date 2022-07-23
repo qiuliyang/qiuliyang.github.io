@@ -17,7 +17,7 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-# 📝 Research
+# 🎓 Research
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Adiabatic Raman SDK</div><img src='images/ramanSDK.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1"> 
@@ -38,9 +38,10 @@ redirect_from:
 - *06/17/2022*, Ultrafast and precise Raman matter-wave control for cold atomic gas, AMO Seminar at UCLA.
 - *06/09/2022*, Efficient precise Raman spinor matter-wave control with composite pulses, Group Seminar at Imerial College.
 
-# 📖 Educations
+# 🏫 Educations
 - *09/2016 - 07/2022*, PhD, Fudan University. 
 - *09/2012 - 06/2016*, Bachelor of Science, Fudan University. 
 
-# Notes
+# 📖 Notes
 - [temp](https://qiuliyang.github.io/files/temp.pdf)
+

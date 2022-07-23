@@ -29,7 +29,11 @@ redirect_from:
 
 # 📝 Publications
 
-- Test
+## 2022
+
+- [Precise spinor matterwave control with nanosecond adiabatic spin-dependent kicks](https://arxiv.org/abs/2202.09709), **Liyang Qiu**, Lingjing Ji, Yizun He, Jiangyong Hu, Yuzhuo Wang, and Saijun Wu, arXiv: 2202.09709 (2022).
+- [Composite picosecond control of atomic state through a nanofiber interface](https://arxiv.org/abs/2203.06716), Yudi Ma, Ruijuan Liu, Lingjing Ji, **Liyang Qiu**, Saijun Wu, Dianqiang Su, Yanting Zhao, Ni Yao, Wei Fang, arXiv: 2203.06716 (2022).
+- [Composite acousto-optical modulation](https://opg.optica.org/oe/fulltext.cfm?uri=oe-30-15-27780&id=479513), Ruijuan Liu, Yudi Ma, Lingjing Ji, **Liyang Qiu**, Minbiao Ji, Zhensheng Tao, and Saijun Wu, Optics Express 30, 27780 (2022).
 
 # 💬 Invited Talks
 

@@ -37,5 +37,3 @@ redirect_from:
 # 📖 Educations
 - *09/2016 - 07/2022*, PhD, Fudan University. 
 - *09/2012 - 06/2016*, Bachelor of Science, Fudan University. 
-
-<object data=”temp.pdf” type=”docs/temp.pdf” width=”500″ height=”400″> </object>

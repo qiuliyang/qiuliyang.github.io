@@ -24,6 +24,8 @@ redirect_from:
   
 [Precise spinor matterwave control with nanosecond adiabatic spin-dependent kicks](https://arxiv.org/pdf/2202.09709.pdf)
 
+</div>
+</div>
 
 # 💬 Invited Talks
 

@@ -17,15 +17,19 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-# 📝 Selected Publications
+# 📝 Research
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Adiabatic Raman SDK</div><img src='images/ramanSDK.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1"> 
-  
+
 [Precise spinor matterwave control with nanosecond adiabatic spin-dependent kicks](https://arxiv.org/pdf/2202.09709.pdf)
 
 </div>
 </div>
+
+# 📝 Publications
+
+- Test
 
 # 💬 Invited Talks
 

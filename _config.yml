@@ -7,7 +7,7 @@
 
 # Site Settings
 title                    : "Liyang Qiu"
-description              : "Research asscociate in Fudan University. Graduating from Fudan Universtiy. Focusing on quantum optics, quantum control and atomic physics."
+description              : "Research asscociate in Fudan University. Focusing on quantum optics, quantum control and atomic physics."
 repository               : "qiuliyang/qiuliyang.github.io"
 google_scholar_stats_use_cdn : true
 
@@ -31,7 +31,7 @@ author:
   email            : "lyqiu16@fudan.edu.cn"
   researchgate     :  # e.g., "https://www.researchgate.net/profile/yourprofile"
   uri              :
-  bitbucket        :
+  bitbucket        : "https://www.researchgate.net/profile/Liyang-Qiu"
   codepen          :
   dribbble         :
   flickr           :

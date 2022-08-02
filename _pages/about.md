@@ -17,6 +17,8 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
+<!-- Hi, I'm Liyang, currently a research asscociate at Fudan University, Shanghai -->
+
 # 🎓 Research
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Adiabatic Raman SDK</div><img src='images/ramanSDK.png' alt="sym" width="100%"></div></div>

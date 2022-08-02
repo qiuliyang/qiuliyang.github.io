@@ -17,8 +17,6 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-<!-- Hi, I'm Liyang, currently a research asscociate at Fudan University, Shanghai -->
-
 # 🎓 Research
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Adiabatic Raman SDK</div><img src='images/ramanSDK.png' alt="sym" width="100%"></div></div>
@@ -49,6 +47,5 @@ Raman spinor matter-mave control
 - *09/2016 - 07/2022*, PhD, Fudan University. 
 - *09/2012 - 06/2016*, BS, Fudan University. 
 
-<!-- # 📖 Notes
-- [temp](https://qiuliyang.github.io/files/temp.pdf) -->
+# 📖 Notes
 

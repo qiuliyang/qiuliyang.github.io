@@ -15,7 +15,7 @@ main:
   - title: "Educations"
     url: "/#-educations"
     
-  - title: "Blogs"
-    url: /blogs/
+  # - title: "Blogs"
+  #   url: /blogs/
 
 

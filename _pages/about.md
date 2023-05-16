@@ -31,9 +31,15 @@ Raman spinor matter-mave control
 
 ## 2022
 
-- [Precise spinor matterwave control with nanosecond adiabatic spin-dependent kicks](https://arxiv.org/abs/2202.09709), **Liyang Qiu**, Lingjing Ji, Yizun He, Jiangyong Hu, Yuzhuo Wang, and Saijun Wu, PRX Quantum, 3, 040301 (2022).
-- [Composite picosecond control of atomic state through a nanofiber interface](https://arxiv.org/abs/2203.06716), Yudi Ma, Ruijuan Liu, Lingjing Ji, **Liyang Qiu**, Saijun Wu, Dianqiang Su, Yanting Zhao, Ni Yao, Wei Fang, arXiv: 2203.06716 (2022).
+- [Precise spinor matterwave control with nanosecond adiabatic spin-dependent kicks](https://journals.aps.org/prxquantum/abstract/10.1103/PRXQuantum.3.040301), **Liyang Qiu**, Lingjing Ji, Yizun He, Jiangyong Hu, Yuzhuo Wang, and Saijun Wu, PRX Quantum, 3, 040301 (2022).
+- [Composite picosecond control of atomic state through a nanofiber interface](https://arxiv.org/abs/2203.06716), Yudi Ma, Ruijuan Liu, Lingjing Ji, **Liyang Qiu**, Saijun Wu, Dianqiang Su, Yanting Zhao, Ni Yao, and Wei Fang, arXiv: 2203.06716 (2022).
 - [Composite acousto-optical modulation](https://opg.optica.org/oe/fulltext.cfm?uri=oe-30-15-27780&id=479513), Ruijuan Liu, Yudi Ma, Lingjing Ji, **Liyang Qiu**, Minbiao Ji, Zhensheng Tao, and Saijun Wu, Optics Express 30, 27780 (2022).
+
+## Earlier
+
+- [Geometric Control of Collective Spontaneous Emission](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.125.213602), Yizun He, Lingjing, Ji, Yuzhuo Wang, Liyang Qiu, Jian Zhao, Yudi Ma, Xing Huang, Yudi Ma, Saijun Wu, and D.E. Chang,  Physical Review Letters 125, 213602 (2020).
+- [Atomic spin-wave control and spin-dependent kicks with shaped subnanosecond pulses](https://journals.aps.org/prresearch/abstract/10.1103/PhysRevResearch.2.043418). Yizun He, Lingjing, Ji, Yuzhuo Wang, Liyang Qiu, Jian Zhao, Yudi Ma, Xing Huang, Yudi Ma, Saijun Wu, and D.E. Chang,  Physical Review Research 2, 043418 (2020).
+- [Precise pulse shaping for quantum control of strong optical transitions](https://opg.optica.org/abstract.cfm?URI=oe-28-12-17171) Optics Express (2020).
 
 # 💬 Invited Talks
 

@@ -15,8 +15,8 @@ main:
   - title: "Employment"
     url: "/#-employment"
     
-  - title: "Education"
-    url: "/#-education"
+#   - title: "Education"
+#     url: "/#-education"
     
 
     

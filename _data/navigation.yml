@@ -12,8 +12,13 @@ main:
   - title: "Invited Talks"
     url: "/#-invited-talks"
 
-  - title: "Educations"
-    url: "/#-educations"
+  - title: "Employment"
+    url: "/#-employment"
+    
+  - title: "Education"
+    url: "/#-education"
+    
+
     
 #   - title: "Resource"
 #     url: "/#-resource"

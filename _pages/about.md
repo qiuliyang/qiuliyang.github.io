@@ -27,6 +27,11 @@ Raman spinor matter-mave control
 </div>
 </div> -->
 
+- Fermion quantum processor (05.2023 - )
+- Optimal quantum control via dipole and Raman transitions (07.2018 - 04.2023)
+- Holographic quantum gas microscopy and spectroscopy (07.2017 - 06.2021)
+- Numerical simulations on laser cooling (09.2016 - 06.2018)
+
 # 📝 Publications
 
 ## 2022
@@ -49,12 +54,14 @@ Raman spinor matter-mave control
 - *06/17/2022*, Ultrafast and precise Raman matter-wave control for cold atomic gas, AMO Seminar at UCLA.
 - *06/09/2022*, Efficient precise Raman spinor matter-wave control with composite pulses, Group Seminar at Imerial College.
 
+# 💼 Employment
+
+- *05/2023 - present*, PostDoc, Max-Planck Institute of Quantum Optics. 
+- *09/2022 - 05/2023*, Visiting Scholar, Fudan University. 
+
 # 🏫 Education
 
 - *09/2016 - 07/2022*, PhD, Fudan University. 
 - *09/2012 - 06/2016*, BS, Fudan University. 
 
-# 💼 Employment
 
-- *05/2023 - present*, PostDoc, Max-Planck Institute of Quantum Optics. 
-- *09/2022 - 05/2023*, Visiting Scholar, Fudan University. 

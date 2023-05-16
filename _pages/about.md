@@ -50,5 +50,5 @@ Raman spinor matter-mave control
 
 # 💼 Employment
 
-- *05/2023 - *, PostDoc, Max-Planck Institute of Quantum Optics. 
+- *05/2023 - present*, PostDoc, Max-Planck Institute of Quantum Optics. 
 - *09/2022 - 05/2023*, Visiting Scholar, Fudan University. 

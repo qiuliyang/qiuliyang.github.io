@@ -7,7 +7,7 @@
 
 # Site Settings
 title                    : "Liyang Qiu"
-description              : "Research asscociate in Fudan University. Focusing on quantum optics, quantum control and atomic physics."
+description              : "PostDoc in MPQ. Working on AMO physics, quantum simulation and quantum computing."
 repository               : "qiuliyang/qiuliyang.github.io"
 google_scholar_stats_use_cdn : true
 
@@ -23,8 +23,8 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 author:
   name             : "Qiu, Liyang"
   avatar           : "images/portrait.png"
-  bio              : "Fudan University"
-  location         : "Shanghai, China"
+  bio              : "MPQ"
+  location         : "Munich, Germany"
   employer         :
   pubmed           : 
   googlescholar    : # "https://scholar.google.com/citations?user=YOUR_GOOGLE_SCHOLAR_ID"

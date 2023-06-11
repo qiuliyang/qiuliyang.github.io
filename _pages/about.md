@@ -28,7 +28,7 @@ Raman spinor matter-mave control
 </div> -->
 
 - [Fermion quantum processor](https://www.quantum-munich.de/387220/fermiqp) (05.2023 - )
-- Optimal quantum control via dipole and Raman transitions (07.2018 - 04.2023)
+- Optimal quantum control via optical and Raman transitions (07.2018 - 04.2023)
 - Sub-nanosecond pulse shaping (07.2018 - 04.2023)
 - Holographic quantum gas microscopy and spectroscopy (07.2017 - 06.2021)
 - Numerical simulations on laser cooling (09.2016 - 06.2018)

@@ -7,7 +7,7 @@
 
 # Site Settings
 title                    : "Liyang Qiu"
-description              : "PostDoc in MPQ. Working on AMO physics, quantum simulation and quantum computing."
+description              : "PostDoc in MPQ. Focusing on AMO physics, quantum simulation and quantum computing."
 repository               : "qiuliyang/qiuliyang.github.io"
 google_scholar_stats_use_cdn : true
 
@@ -23,12 +23,12 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 author:
   name             : "Qiu, Liyang"
   avatar           : "images/portrait.png"
-  bio              : "MPQ"
-  location         : "Munich, Germany"
+  bio              : "Max-Planck-Institut für Quantenoptik"
+  location         : "Garching, Germany"
   employer         :
   pubmed           : 
   googlescholar    : # "https://scholar.google.com/citations?user=YOUR_GOOGLE_SCHOLAR_ID"
-  email            : "lyqiu16@fudan.edu.cn"
+  email            : "liyang.qiu@mpq.mpg.de"
   researchgate     : "https://www.researchgate.net/profile/Liyang-Qiu"
   uri              :
   bitbucket        : 

@@ -53,12 +53,12 @@ Raman spinor matter-mave control
 - *07/22/2022*, Precise spinor matterwave control with nanosecond Raman pulses in a "biased-rotation" regime, [Invited Talk at USTC](http://lmmr.ustc.edu.cn/2022/0720/c13224a563099/page.htm).
 - *07/08/2022*, Precise spinor matterwave control with nanosecond Raman pulses in a "biased-rotation" regime, [Group Seminar at MPQ](https://www.quantum-munich.de/377144/precise-spinor-matterwave-control-with-nanosecond-raman-pulses-in-a-biased-rotation-regime).
 - *06/17/2022*, Ultrafast and precise Raman matter-wave control for cold atomic gas, AMO Seminar at UCLA.
-- *06/09/2022*, Efficient precise Raman spinor matter-wave control with composite pulses, Group Seminar at Imerial College.
+- *06/09/2022*, Efficient precise Raman spinor matter-wave control with composite pulses, Group Seminar at Imperial College.
 
 # 💼 Employment
 
 - *05/2023 - present*, PostDoc, Max-Planck Institute of Quantum Optics. 
-- *09/2022 - 05/2023*, Visiting Scholar, Fudan University. 
+- *09/2022 - 05/2023*, Postdoctoral research asscociate, Fudan University. 
 
 # 🏫 Education
 

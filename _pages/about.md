@@ -66,3 +66,6 @@ Raman spinor matter-mave control
 - *09/2012 - 06/2016*, BS, Fudan University. 
 
 
+# 📚 Wiki
+
+My research notes (Fermi-Hubbard physics, quantum gas microscopy, numerics, atom interferometry), published as a [password-protected wiki](https://lqiu-wiki.pages.dev). Contact me for access.

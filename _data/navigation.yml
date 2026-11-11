@@ -14,6 +14,9 @@ main:
 
   - title: "Employment"
     url: "/#-employment"
+
+  - title: "Wiki"
+    url: "/#-wiki"
     
 #   - title: "Education"
 #     url: "/#-education"

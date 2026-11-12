@@ -196,8 +196,8 @@ export const site = {
   announcements: {
     /** Show news/announcements section on the about page. */
     enabled: true,
-    /** Enable vertical scroll if more than 3 items. */
-    scrollable: true,
+    /** Enable vertical scroll if more than 3 items. Off: items carry summaries and should read in full. */
+    scrollable: false,
     /** Max news items to show (undefined = show all). */
     limit: 5 as number | undefined,
   },

@@ -121,7 +121,6 @@ export const site = {
       { label: 'publications', href: '/publications/' },
       { label: 'invited talks', href: '/talks/' },
       { label: 'cv', href: '/cv/' },
-      { label: 'wiki', href: 'https://lqiu-wiki.pages.dev' },
     ] as NavItem[],
   },
 

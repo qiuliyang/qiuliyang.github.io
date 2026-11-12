@@ -118,11 +118,20 @@ export function getYear(entry: BibEntry): number {
   return parseInt(entry.fields.year ?? '0', 10);
 }
 
-/** Get formatted authors string: "First Last, First Last, ..." */
+/**
+ * Get formatted authors string: "First Last, First Last, ..."
+ *
+ * Contribution marks may be written after the last name in BibTeX
+ * ("Lange*, Hannah", "Bohrdt†, Annabelle", or "Bohrdt\dagger, Annabelle");
+ * they are kept at the end of the formatted name ("Hannah Lange*") and
+ * split off again by linkAuthors() for display.
+ */
 export function getAuthors(entry: BibEntry): string {
   const raw = entry.fields.author ?? '';
   if (!raw) return '';
   return raw
+    .replace(/\\ddagger/g, '‡')
+    .replace(/\\dagger/g, '†')
     .split(/\s+and\s+/i)
     .map((a) => {
       const trimmed = a.trim();
@@ -195,7 +204,12 @@ export const BIBTEX_INTERNAL_FIELDS = new Set([
 export function getCleanBibtex(entry: BibEntry): string {
   const fields = Object.entries(entry.fields)
     .filter(([k]) => !BIBTEX_INTERNAL_FIELDS.has(k))
-    .map(([k, v]) => `  ${k} = {${v}}`)
+    .map(([k, v]) => {
+      // Author contribution marks (*, †, \dagger …) are display-only; drop them from the citation.
+      const value =
+        k === 'author' ? v.replace(/\\d?dagger|[*†‡§]+(?=\s*,|\s+and\b|\s*$)/g, '') : v;
+      return `  ${k} = {${value}}`;
+    })
     .join(',\n');
   return `@${entry.type}{${entry.key},\n${fields}\n}`;
 }

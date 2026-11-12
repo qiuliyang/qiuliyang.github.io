@@ -2,7 +2,7 @@
 import BibSearch from '@components/publications/BibSearch.tsx';
 import { site } from '@config/site';
 import Page from '@layouts/Page.astro';
-import type { CoauthorMap } from '@utils/authors';
+import { type CoauthorMap, stripAuthorMarks } from '@utils/authors';
 import { withBase } from '@utils/base';
 import { getAuthors, getTitle, getVenue, parseBibtex } from '@utils/bibtex';
 import yaml from 'js-yaml';
@@ -30,6 +30,14 @@ const previewDir = withBase(site.publications.previewDir);
 const pdfDir = withBase(site.publications.pdfDir);
 const scholarUserId = site.socials.scholar_userid ?? '';
 const badges = site.publications.badges;
+
+// Legend for author contribution marks, shown only when some entry uses them.
+const allAuthors = entries.map((e) => getAuthors(e)).join(', ');
+const hasEqual = allAuthors.includes('*');
+const hasCorresponding = allAuthors.includes('†');
+const legend = [hasEqual && '* equal contribution', hasCorresponding && '† corresponding author']
+  .filter(Boolean)
+  .join(' · ');
 ---
 
 <Page title="Publications" description={`Publications by ${site.author.name}`}>
@@ -37,7 +45,7 @@ const badges = site.publications.badges;
   <Fragment slot="head">
     {
       entries.map((entry) => {
-        const authors = getAuthors(entry).split(', ');
+        const authors = stripAuthorMarks(getAuthors(entry)).split(', ');
         return (
           <>
             <meta name="citation_title" content={getTitle(entry)} />
@@ -68,6 +76,13 @@ const badges = site.publications.badges;
   <div class="post">
     <header class="post-header">
       <h1 class="post-title">publications</h1>
+      {
+        legend && (
+          <p class="post-description" style="color: var(--global-text-color-light); font-size: 0.85rem;">
+            {legend}
+          </p>
+        )
+      }
     </header>
 
     <article>

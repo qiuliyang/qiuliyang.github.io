@@ -6,12 +6,39 @@
  */
 
 export interface AuthorLink {
-  /** Display name exactly as it appears in the author list. */
+  /** Display name exactly as it appears in the author list (contribution marks removed). */
   name: string;
   /** Profile URL from coauthors.yml, if matched. */
   url?: string;
   /** True when the last name matches the site owner's configured last name. */
   isSelf: boolean;
+  /**
+   * Contribution marks written after the name in BibTeX, e.g. "*" (equal contribution)
+   * or "†" (corresponding author). Rendered as a superscript.
+   */
+  mark?: string;
+}
+
+/** Characters accepted as author contribution marks at the end of a name. */
+const MARK_RE = /[*†‡§]+$/u;
+
+/**
+ * Split trailing contribution marks off an author name.
+ * "Hannah Lange*" → { name: "Hannah Lange", mark: "*" }
+ */
+export function splitAuthorMark(author: string): { name: string; mark?: string } {
+  const trimmed = author.trim();
+  const m = trimmed.match(MARK_RE);
+  if (!m) return { name: trimmed };
+  return { name: trimmed.slice(0, -m[0].length).trim(), mark: m[0] };
+}
+
+/** Remove contribution marks from a ", "-joined author string (for metadata and search). */
+export function stripAuthorMarks(authors: string): string {
+  return authors
+    .split(', ')
+    .map((a) => splitAuthorMark(a).name)
+    .join(', ');
 }
 
 /** One entry in coauthors.yml (keyed by last name). */
@@ -52,9 +79,10 @@ export function linkAuthors(
   authorLastName: string,
 ): AuthorLink[] {
   const normOwner = normalizeForMatch(authorLastName);
-  return authorList.map((author) => {
-    const parts = author.trim().split(/\s+/);
-    if (parts.length === 0) return { name: author, isSelf: false };
+  return authorList.map((rawAuthor) => {
+    const { name: author, mark } = splitAuthorMark(rawAuthor);
+    const parts = author.split(/\s+/);
+    if (parts.length === 0) return { name: author, isSelf: false, mark };
 
     const last = parts[parts.length - 1];
     const normLast = normalizeForMatch(last);
@@ -66,6 +94,6 @@ export function linkAuthors(
       coauthors[last] ??
       Object.entries(coauthors).find(([k]) => normalizeForMatch(k) === normLast)?.[1];
 
-    return { name: author, url: entry?.url, isSelf };
+    return { name: author, url: entry?.url, isSelf, mark };
   });
 }

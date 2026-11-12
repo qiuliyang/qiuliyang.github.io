@@ -18,6 +18,14 @@ workflow in `.github/workflows/deploy.yml` on every push to `main`.
 | News items on the front page | `src/content/announcements/YYYY-MM-DD.md` |
 | Profile photo | `public/assets/img/prof_pic.jpg` |
 
+## Author marks
+
+Equal contribution and corresponding authorship are written directly after the last name
+in `papers.bib`: `author = {Lange*, Hannah and Qiu*, Liyang and ... and Bohrdt†, Annabelle}`
+(`\dagger` also works). They render as superscripts, a legend appears above the list, and
+the marks are stripped from the copyable BibTeX and from the Google Scholar meta tags.
+The site owner's name (`publications.authorLastName` in `site.ts`) is shown in bold.
+
 ## Publication workflow
 
 1. A preprint appears on arXiv: add one entry to `papers.bib` with `abbr = {arXiv}`,

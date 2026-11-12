@@ -192,7 +192,12 @@ function PublicationEntry({
             <div className="author">
               {visibleAuthorLinks.map((al, i) => {
                 const isLast = i === visibleAuthorLinks.length - 1 && hiddenCount === 0;
-                const nameEl = al.isSelf ? <em>{al.name}</em> : <>{al.name}</>;
+                const nameEl = (
+                  <>
+                    {al.isSelf ? <strong>{al.name}</strong> : al.name}
+                    {al.mark && <sup className="author-mark">{al.mark}</sup>}
+                  </>
+                );
                 return (
                   <span key={i}>
                     {al.url ? (

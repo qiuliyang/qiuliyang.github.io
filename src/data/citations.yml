@@ -1,0 +1,4 @@
+# Citation counts keyed by google_scholar_id from papers.bib.
+# Filled automatically by scripts/update-citations.ts (OpenAlex) for entries that
+# carry both a doi and a google_scholar_id. Empty until those IDs are added.
+{}

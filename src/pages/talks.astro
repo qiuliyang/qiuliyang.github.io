@@ -51,15 +51,22 @@ const typeLabel: Record<string, string> = {
                 <li class="talk">
                   <div class="talk-date">{formatDate(t.date)}</div>
                   <div class="talk-body">
-                    {t.type && <span class="badge-abbr">{typeLabel[t.type] ?? t.type}</span>}
+                    {t.type && (
+                      <span class={`badge-abbr badge-${t.type}`}>{typeLabel[t.type] ?? t.type}</span>
+                    )}
                     <span class="talk-title">{t.title}</span>
                     <br />
                     {t.url ? (
-                      <a href={t.url} target="_blank" rel="noopener noreferrer" class="talk-venue">
+                      <a
+                        href={t.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class={`talk-venue venue-${t.type ?? 'seminar'}`}
+                      >
                         {t.venue}
                       </a>
                     ) : (
-                      <span class="talk-venue">{t.venue}</span>
+                      <span class={`talk-venue venue-${t.type ?? 'seminar'}`}>{t.venue}</span>
                     )}
                   </div>
                 </li>
@@ -112,6 +119,16 @@ const typeLabel: Record<string, string> = {
   }
   .badge-abbr {
     margin-right: 0.5rem;
+  }
+  /* Conference: filled accent badge, italic venue (a named meeting).
+     Seminar: outlined grey badge, upright venue (an institution). */
+  .badge-seminar {
+    background-color: transparent;
+    color: var(--global-text-color-light);
+    border: 1px solid var(--global-text-color-light);
+  }
+  .venue-conference {
+    font-style: italic;
   }
   @media (max-width: 576px) {
     .talk {

@@ -1,16 +1,36 @@
-# Talks, newest first. Rendered by src/pages/talks.astro.
-# Fields: date (YYYY-MM-DD), title, venue, url (optional), type (invited | seminar | contributed)
+# Invited talks, newest first. Rendered by src/pages/talks.astro.
+# Fields: date (YYYY-MM-DD), title, venue, url (optional), type (conference | seminar)
+
+- date: 2026-10-12
+  title: Exploring new regimes of the doped Fermi-Hubbard model
+  venue: Quantum Simulation of Fundamental Physics, Shanghai
+  type: conference
+
+- date: 2026-08-28
+  title: Quantum simulation of the doped Fermi-Hubbard model
+  venue: Institute of Theoretical Physics, Chinese Academy of Sciences, Beijing
+  type: seminar
+
+- date: 2026-08-25
+  title: Quantum simulation of the doped Fermi-Hubbard model
+  venue: Quantum Gas 2026, Beijing
+  type: conference
+
+- date: 2025-12-06
+  title: Towards a fermionic optical lattice quantum processor
+  venue: Sino-German Symposium on Physics & 34th GCPD Annual Meeting, Hannover
+  type: conference
 
 - date: 2022-07-26
   title: Precise spinor matterwave control with nanosecond Raman pulses in a "biased-rotation" regime
   venue: The 15th Colloquium for Young Scholars in Cold Atomic Physics
-  type: invited
+  type: seminar
 
 - date: 2022-07-22
   title: Precise spinor matterwave control with nanosecond Raman pulses in a "biased-rotation" regime
   venue: University of Science and Technology of China, Hefei
   url: http://lmmr.ustc.edu.cn/2022/0720/c13224a563099/page.htm
-  type: invited
+  type: seminar
 
 - date: 2022-07-08
   title: Precise spinor matterwave control with nanosecond Raman pulses in a "biased-rotation" regime

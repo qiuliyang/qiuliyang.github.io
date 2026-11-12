@@ -119,7 +119,7 @@ export const site = {
     items: [
       { label: 'about', href: '/' },
       { label: 'publications', href: '/publications/' },
-      { label: 'talks', href: '/talks/' },
+      { label: 'invited talks', href: '/talks/' },
       { label: 'cv', href: '/cv/' },
       { label: 'wiki', href: 'https://lqiu-wiki.pages.dev' },
     ] as NavItem[],

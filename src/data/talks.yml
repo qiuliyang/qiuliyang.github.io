@@ -1,0 +1,29 @@
+# Talks, newest first. Rendered by src/pages/talks.astro.
+# Fields: date (YYYY-MM-DD), title, venue, url (optional), type (invited | seminar | contributed)
+
+- date: 2022-07-26
+  title: Precise spinor matterwave control with nanosecond Raman pulses in a "biased-rotation" regime
+  venue: The 15th Colloquium for Young Scholars in Cold Atomic Physics
+  type: invited
+
+- date: 2022-07-22
+  title: Precise spinor matterwave control with nanosecond Raman pulses in a "biased-rotation" regime
+  venue: University of Science and Technology of China, Hefei
+  url: http://lmmr.ustc.edu.cn/2022/0720/c13224a563099/page.htm
+  type: invited
+
+- date: 2022-07-08
+  title: Precise spinor matterwave control with nanosecond Raman pulses in a "biased-rotation" regime
+  venue: Group seminar, Max Planck Institute of Quantum Optics
+  url: https://www.quantum-munich.de/377144/precise-spinor-matterwave-control-with-nanosecond-raman-pulses-in-a-biased-rotation-regime
+  type: seminar
+
+- date: 2022-06-17
+  title: Ultrafast and precise Raman matter-wave control for cold atomic gas
+  venue: AMO seminar, University of California, Los Angeles
+  type: seminar
+
+- date: 2022-06-09
+  title: Efficient precise Raman spinor matter-wave control with composite pulses
+  venue: Group seminar, Imperial College London
+  type: seminar

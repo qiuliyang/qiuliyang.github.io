@@ -1,0 +1,62 @@
+# RenderCV YAML format — https://docs.rendercv.com/
+# Rendered by the CV page (site.cv.format = 'rendercv').
+
+cv:
+  name: Liyang Qiu
+  location: Garching, Germany
+  email: liyang.qiu@mpq.mpg.de
+  website: https://qiuliyang.github.io
+  summary: >-
+    Experimental atomic physicist working on quantum simulation of the Fermi-Hubbard model
+    with a fermionic quantum gas microscope (FermiQP, MPQ). Background in coherent control of
+    atomic matter waves with nanosecond optical pulses, holographic imaging of cold atoms, and
+    tensor-network / quantum Monte Carlo numerics for comparing experiment with theory.
+  social_networks:
+    - network: GitHub
+      username: qiuliyang
+    - network: ORCID
+      username: 0000-0003-1370-9791
+
+  sections:
+    experience:
+      - company: Max Planck Institute of Quantum Optics
+        position: Postdoctoral researcher
+        location: Garching, Germany
+        start_date: 2023-05
+        end_date: present
+        highlights:
+          - "FermiQP: a fermionic quantum processor based on a quantum gas microscope"
+          - Fermi-Hubbard quantum simulation with lithium atoms in optical lattices
+          - Coherent control of atoms in optical superlattices; three-band (Emery) model proposals
+
+      - company: Fudan University
+        position: Postdoctoral research associate
+        location: Shanghai, China
+        start_date: 2022-09
+        end_date: 2023-05
+        highlights:
+          - Composite Raman pulses for high-fidelity spinor matter-wave control
+
+    education:
+      - institution: Fudan University
+        area: Physics
+        degree: PhD
+        start_date: 2016-09
+        end_date: 2022-07
+        highlights:
+          - "Advisor: Saijun Wu"
+          - Nanosecond and picosecond optical control of atomic matter waves; holographic quantum gas microscopy
+
+      - institution: Fudan University
+        area: Physics
+        degree: BS
+        start_date: 2012-09
+        end_date: 2016-06
+
+    skills:
+      - label: Experiment
+        details: Ultracold atoms, optical lattices, quantum gas microscopy, pulse shaping, Raman control, holographic imaging
+      - label: Numerics
+        details: Julia, Python, DMRG and tensor networks, determinant QMC, exact diagonalization
+      - label: Languages
+        details: Chinese (native), English (fluent)

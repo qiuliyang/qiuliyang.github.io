@@ -1,10 +1,10 @@
 # Venue / journal abbreviation → full name mapping.
 # Used by the publications page to expand abbreviated venue names.
 
-PRL: Physical Review Letters
-PRR: Physical Review Research
+Phys. Rev. Lett.: Physical Review Letters
+Phys. Rev. Res.: Physical Review Research
+Phys. Rev. Appl.: Physical Review Applied
 PRX Quantum: PRX Quantum
-PR Applied: Physical Review Applied
 Commun. Phys.: Communications Physics
 Opt. Express: Optics Express
 Chin. Opt. Lett.: Chinese Optics Letters

@@ -2,7 +2,7 @@
 # Fields:
 #   date   YYYY-MM-DD
 #   title  talk title
-#   type   conference | workshop | seminar
+#   type   conference | workshop | colloquium | seminar
 #   event  name of the meeting or seminar series (rendered in italics); omit if none
 #   host   institution and/or city (rendered upright)
 #   url    optional link (applied to the event/host line)
@@ -24,6 +24,37 @@
   event: Quantum Gas 2026
   host: Beijing
 
+- date: 2026-07-02
+  title: Microscopic study of emergent stripe correlations in a Fermi-Hubbard model
+  type: seminar
+  host: Fudan University, Shanghai
+
+- date: 2026-06-24
+  title: Microscopic study of emergent stripe correlations in a new-generation Fermi-Hubbard simulator
+  type: seminar
+  host: Shanghai Institute of Advanced Studies, University of Science and Technology of China, Shanghai
+
+- date: 2026-06-20
+  title: Microscopic study of spin-stripe correlations in a Fermi-Hubbard model
+  type: seminar
+  host: Hainan University, Haikou
+
+- date: 2026-06-02
+  title: Microscopic study of emergent stripe correlations in a Fermi-Hubbard model
+  type: colloquium
+  host: Max Planck Institute of Quantum Optics, Garching
+
+- date: 2026-03-16
+  title: "FermiQP: fermionic quantum processor in optical lattices"
+  type: workshop
+  event: Fermi Meeting
+  host: Munich
+
+- date: 2026-01-16
+  title: A fermionic quantum simulator in optical lattices
+  type: seminar
+  host: Ludwig Maximilian University of Munich, Munich
+
 - date: 2025-12-06
   title: Towards a fermionic optical lattice quantum processor
   type: conference
@@ -34,6 +65,7 @@
   title: Precise spinor matterwave control with nanosecond Raman pulses in a "biased-rotation" regime
   type: seminar
   event: The 15th Colloquium for Young Scholars in Cold Atomic Physics
+  host: Xilinhot
 
 - date: 2022-07-22
   title: Precise spinor matterwave control with nanosecond Raman pulses in a "biased-rotation" regime
@@ -44,15 +76,15 @@
 - date: 2022-07-08
   title: Precise spinor matterwave control with nanosecond Raman pulses in a "biased-rotation" regime
   type: seminar
-  host: Group seminar, Max Planck Institute of Quantum Optics
+  host: Max Planck Institute of Quantum Optics, Garching
   url: https://www.quantum-munich.de/377144/precise-spinor-matterwave-control-with-nanosecond-raman-pulses-in-a-biased-rotation-regime
 
 - date: 2022-06-17
   title: Ultrafast and precise Raman matter-wave control for cold atomic gas
   type: seminar
-  host: AMO seminar, University of California, Los Angeles
+  host: University of California, Los Angeles
 
 - date: 2022-06-09
   title: Efficient precise Raman spinor matter-wave control with composite pulses
   type: seminar
-  host: Group seminar, Imperial College London
+  host: Imperial College London

@@ -29,10 +29,15 @@ The site owner's name (`publications.authorLastName` in `site.ts`) is shown in b
 ## Publication workflow
 
 1. A preprint appears on arXiv: add one entry to `papers.bib` with `abbr = {arXiv}`,
-   `journal = {arXiv preprint}` and the `arxiv` field, plus a news item.
+   `journal = {arXiv preprint}` and the `arxiv` field, plus a news item dated on the arXiv
+   date: `New preprint: [Title](https://arxiv.org/abs/XXXX.XXXXX).`
 2. The paper is published: add a **new** entry for the journal version (journal, volume,
    pages, doi; keep the `arxiv` field so both buttons show), then move the old arXiv entry
    from `papers.bib` to `papers-archive.bib`. One visible entry per paper.
+   Keep the news item on its arXiv date; switch its link to the DOI and append
+   `Published in *Journal* **vol**, pages (D Mon YYYY).`
+
+Do not set the `html` field: the DOI button already links to the journal page.
 
 ## Local development
 

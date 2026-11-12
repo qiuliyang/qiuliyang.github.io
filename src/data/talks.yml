@@ -1,49 +1,58 @@
 # Invited talks, newest first. Rendered by src/pages/talks.astro.
-# Fields: date (YYYY-MM-DD), title, venue, url (optional), type (conference | seminar)
+# Fields:
+#   date   YYYY-MM-DD
+#   title  talk title
+#   type   conference | workshop | seminar
+#   event  name of the meeting or seminar series (rendered in italics); omit if none
+#   host   institution and/or city (rendered upright)
+#   url    optional link (applied to the event/host line)
 
 - date: 2026-10-12
   title: Exploring new regimes of the doped Fermi-Hubbard model
-  venue: Quantum Simulation of Fundamental Physics, Shanghai
   type: conference
+  event: Quantum Simulation of Fundamental Physics
+  host: Shanghai
 
 - date: 2026-08-28
   title: Quantum simulation of the doped Fermi-Hubbard model
-  venue: Institute of Theoretical Physics, Chinese Academy of Sciences, Beijing
   type: seminar
+  host: Institute of Theoretical Physics, Chinese Academy of Sciences, Beijing
 
 - date: 2026-08-25
   title: Quantum simulation of the doped Fermi-Hubbard model
-  venue: Quantum Gas 2026, Beijing
   type: conference
+  event: Quantum Gas 2026
+  host: Beijing
 
 - date: 2025-12-06
   title: Towards a fermionic optical lattice quantum processor
-  venue: Sino-German Symposium on Physics & 34th GCPD Annual Meeting, Hannover
   type: conference
+  event: Sino-German Symposium on Physics & 34th GCPD Annual Meeting
+  host: Hannover
 
 - date: 2022-07-26
   title: Precise spinor matterwave control with nanosecond Raman pulses in a "biased-rotation" regime
-  venue: The 15th Colloquium for Young Scholars in Cold Atomic Physics
   type: seminar
+  event: The 15th Colloquium for Young Scholars in Cold Atomic Physics
 
 - date: 2022-07-22
   title: Precise spinor matterwave control with nanosecond Raman pulses in a "biased-rotation" regime
-  venue: University of Science and Technology of China, Hefei
-  url: http://lmmr.ustc.edu.cn/2022/0720/c13224a563099/page.htm
   type: seminar
+  host: University of Science and Technology of China, Hefei
+  url: http://lmmr.ustc.edu.cn/2022/0720/c13224a563099/page.htm
 
 - date: 2022-07-08
   title: Precise spinor matterwave control with nanosecond Raman pulses in a "biased-rotation" regime
-  venue: Group seminar, Max Planck Institute of Quantum Optics
-  url: https://www.quantum-munich.de/377144/precise-spinor-matterwave-control-with-nanosecond-raman-pulses-in-a-biased-rotation-regime
   type: seminar
+  host: Group seminar, Max Planck Institute of Quantum Optics
+  url: https://www.quantum-munich.de/377144/precise-spinor-matterwave-control-with-nanosecond-raman-pulses-in-a-biased-rotation-regime
 
 - date: 2022-06-17
   title: Ultrafast and precise Raman matter-wave control for cold atomic gas
-  venue: AMO seminar, University of California, Los Angeles
   type: seminar
+  host: AMO seminar, University of California, Los Angeles
 
 - date: 2022-06-09
   title: Efficient precise Raman spinor matter-wave control with composite pulses
-  venue: Group seminar, Imperial College London
   type: seminar
+  host: Group seminar, Imperial College London

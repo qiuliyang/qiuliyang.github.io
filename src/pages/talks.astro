@@ -8,9 +8,12 @@ import talksRaw from '../data/talks.yml?raw';
 type Talk = {
   date: string;
   title: string;
-  venue: string;
+  /** Named meeting or seminar series; rendered in italics. */
+  event?: string;
+  /** Institution and/or city; rendered upright. */
+  host?: string;
   url?: string;
-  type?: 'conference' | 'seminar';
+  type?: 'conference' | 'workshop' | 'seminar';
 };
 
 // JSON_SCHEMA keeps `date` as a plain string instead of a JS Date.
@@ -30,6 +33,7 @@ const formatDate = (iso: string) =>
 
 const typeLabel: Record<string, string> = {
   conference: 'Conference',
+  workshop: 'Workshop',
   seminar: 'Seminar',
 };
 ---
@@ -38,7 +42,7 @@ const typeLabel: Record<string, string> = {
   <div class="post">
     <header class="post-header">
       <h1 class="post-title">invited talks</h1>
-      <p class="post-description">Invited conference talks and seminars.</p>
+      <p class="post-description">Invited conference and workshop talks, and seminars.</p>
     </header>
 
     <article>
@@ -56,18 +60,17 @@ const typeLabel: Record<string, string> = {
                     )}
                     <span class="talk-title">{t.title}</span>
                     <br />
-                    {t.url ? (
-                      <a
-                        href={t.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class={`talk-venue venue-${t.type ?? 'seminar'}`}
-                      >
-                        {t.venue}
-                      </a>
-                    ) : (
-                      <span class={`talk-venue venue-${t.type ?? 'seminar'}`}>{t.venue}</span>
-                    )}
+                    {(t.event || t.host) &&
+                      (t.url ? (
+                        <a href={t.url} target="_blank" rel="noopener noreferrer" class="talk-venue">
+                          {/* kept on one line: a line break between expressions renders as a space before the comma */}
+                          {t.event && <em class="talk-event">{t.event}</em>}{t.event && t.host && ', '}{t.host}
+                        </a>
+                      ) : (
+                        <span class="talk-venue">
+                          {t.event && <em class="talk-event">{t.event}</em>}{t.event && t.host && ', '}{t.host}
+                        </span>
+                      ))}
                   </div>
                 </li>
               ))}
@@ -120,14 +123,14 @@ const typeLabel: Record<string, string> = {
   .badge-abbr {
     margin-right: 0.5rem;
   }
-  /* Conference: filled accent badge, italic venue (a named meeting).
-     Seminar: outlined grey badge, upright venue (an institution). */
+  /* Conference / workshop: filled accent badge. Seminar: outlined grey badge.
+     The event name (talk.event) is italic, the host institution/city upright. */
   .badge-seminar {
     background-color: transparent;
     color: var(--global-text-color-light);
     border: 1px solid var(--global-text-color-light);
   }
-  .venue-conference {
+  .talk-event {
     font-style: italic;
   }
   @media (max-width: 576px) {

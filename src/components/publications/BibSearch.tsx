@@ -57,6 +57,8 @@ interface Props {
 function entryUrl(entry: BibEntry): string {
   if (entry.fields.html) return entry.fields.html;
   if (entry.fields.doi) return `https://doi.org/${entry.fields.doi}`;
+  // Preprints without a DOI: the title links to the arXiv abstract page.
+  if (entry.fields.arxiv) return `https://arxiv.org/abs/${entry.fields.arxiv}`;
   return '';
 }
 

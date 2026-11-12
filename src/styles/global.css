@@ -835,8 +835,8 @@
     border-radius: 3px;
     font-size: 0.7rem;
     font-weight: 700;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    /* Keep the journal abbreviation's own casing (arXiv, Phys. Rev. Lett.). */
   }
   .publications ol.bibliography li .abbr abbr a {
     color: white;
@@ -979,7 +979,6 @@
     border-radius: 3px;
     font-size: 0.7rem;
     font-weight: 700;
-    text-transform: uppercase;
     white-space: nowrap;
   }
   .date-column .location {

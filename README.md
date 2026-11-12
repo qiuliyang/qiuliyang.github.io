@@ -36,8 +36,8 @@ The site owner's name (`publications.authorLastName` in `site.ts`) is shown in b
    from `papers.bib` to `papers-archive.bib`. One visible entry per paper.
    Keep the news item on its arXiv date; switch its link to the DOI and append
    `Published in *Journal* **vol**, pages (D Mon YYYY).`
-3. Every paper news item ends with a two- or three-sentence plain-language summary of the
-   result, written from the abstract.
+3. Every paper news item has a second paragraph `AI summary: <one sentence>` written from
+   the abstract; it renders smaller and lighter under the news line.
 
 Do not set the `html` field: the DOI button already links to the journal page.
 

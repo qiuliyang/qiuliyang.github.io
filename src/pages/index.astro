@@ -104,7 +104,7 @@ const renderedAnnouncements = await Promise.all(
                       <td style="padding: 0.5rem 1rem 0.5rem 0; white-space: nowrap; vertical-align: top; color: var(--global-text-color-light); font-size: 0.8rem;">
                         {formatDate(item.data.date)}
                       </td>
-                      <td style="padding: 0.5rem 0; font-size: 0.9rem; color: var(--global-text-color);">
+                      <td class="news-body" style="padding: 0.5rem 0; font-size: 0.9rem; color: var(--global-text-color);">
                         <Content />
                       </td>
                     </tr>
@@ -241,5 +241,11 @@ const renderedAnnouncements = await Promise.all(
   .desc {
     font-size: 1rem;
     margin-bottom: 1rem;
+  }
+  /* Second paragraph of a news item (the "AI summary:" line): smaller and lighter. */
+  .news-body :global(p + p) {
+    margin-top: 0.25rem;
+    font-size: 0.85rem;
+    color: var(--global-text-color-light);
   }
 </style>

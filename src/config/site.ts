@@ -50,7 +50,7 @@ export const site = {
     email: 'liyang.qiu@mpq.mpg.de',
 
     /** Path to profile photo. Place image in public/assets/img/. */
-    avatar: '/assets/img/prof_pic.jpg',
+    avatar: '/assets/img/prof_pic.png',
 
     /**
      * Subtitle below your name on the about page.

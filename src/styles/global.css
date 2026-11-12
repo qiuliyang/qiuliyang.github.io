@@ -404,9 +404,11 @@
   }
   .profile .more-info {
     margin-bottom: 5px;
-    margin-top: 5px;
-    font-family: monospace;
+    margin-top: 1rem;
+    font-family: var(--font-sans);
     font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--global-text-color-light);
   }
   .profile .more-info p {
     display: inline-block;

@@ -3,18 +3,18 @@
 #
 # Paper metadata (title, authors, venue, DOI, arXiv) is pulled automatically from
 # src/data/papers.bib by citation key; talk metadata is pulled from src/data/talks.yml
-# by ISO date + title match (or ISO date when unique).
+# by ISO date.
 
 columns:
   - id: foundations
-    title: Optical Control & Microscopy
-    subtitle: Waveforms, trapping & single-site readout
+    title: Optical & Superlattice Control
+    subtitle: Temporal pulse shaping & spatial lattice unitaries
   - id: engineering
     title: State & Hamiltonian Engineering
-    subtitle: Unitary synthesis, cooling & lattice models
+    subtitle: Composite gates, cooling & multi-band models
   - id: physics
     title: Collective & Correlated Physics
-    subtitle: Superradiance, doped Hubbard & stripes
+    subtitle: Light–atom ensembles, doped Hubbard & stripes
 
 ongoingWorks:
   - id: stripes-work
@@ -45,7 +45,7 @@ ongoingWorks:
       fermionic states.
 
 nodes:
-  # ─── Column 1: Optical Control & Microscopy (2 nodes) ──────────────────────
+  # ─── Column 1: Optical & Superlattice Control (2 nodes) ────────────────────
   - id: waveforms
     column: foundations
     title: Optical Waveform & Pulse Shaping
@@ -61,23 +61,22 @@ nodes:
       - ma2020precise
     talks: []
 
-  - id: microscopy
+  - id: rearrangements
     column: foundations
-    title: Holographic & Quantum Gas Microscopy
-    tagline: Slow-light phase holography to spin/charge-resolved Li-6 QGM
-    era: Fudan → MPQ
+    title: Coherent Lattice Rearrangements
+    tagline: All-to-all U(N) unitaries via tunneling & local phase shifts
+    era: MPQ
     summary: >-
-      Microscopic optical readout of cold atoms across two platforms: holographic phase
-      reconstruction of dragged slow light in moving atomic ensembles, and single-site spin- and
-      charge-resolved fluorescence microscopy of lithium fermions in optical lattices (FermiQP).
+      Alternating global superlattice tunneling with site-resolved optical phase shifts synthesizes
+      arbitrary single-particle U(N) unitary transformations — a cold-atom counterpart of Clements
+      interferometric decomposition with sublinear circuit depth in two dimensions.
     papers:
-      - wang2022imaging
+      - roth2026rearrangements
     talks:
       - '2026-03-16'
-      - '2026-01-16'
       - '2025-12-06'
 
-  # ─── Column 2: State & Hamiltonian Engineering (4 nodes) ───────────────────
+  # ─── Column 2: State & Hamiltonian Engineering (3 nodes) ───────────────────
   - id: matter-wave
     column: engineering
     title: Composite & Ultrafast Matter-Wave Control
@@ -99,21 +98,6 @@ nodes:
       - '2022-07-08'
       - '2022-06-17'
       - '2022-06-09'
-
-  - id: rearrangements
-    column: engineering
-    title: Coherent Lattice Rearrangements
-    tagline: All-to-all U(N) unitaries via tunneling & local phase shifts
-    era: MPQ
-    summary: >-
-      Alternating global superlattice tunneling with site-resolved optical phase shifts synthesizes
-      arbitrary single-particle U(N) unitary transformations — a cold-atom counterpart of Clements
-      interferometric decomposition with sublinear circuit depth in two dimensions.
-    papers:
-      - roth2026rearrangements
-    talks:
-      - '2026-03-16'
-      - '2025-12-06'
 
   - id: cooling
     column: engineering
@@ -148,14 +132,15 @@ nodes:
   - id: collective
     column: physics
     title: Collective Light–Atom Interactions
-    tagline: Geometric superradiance & microscopic dipolar interactions
+    tagline: Geometric superradiance, dipolar shifts & slow-light probing
     era: Fudan
     summary: >-
       Imprinting sub-nanosecond spin-wave phase patterns onto dense cold-atom ensembles steers
-      collective spontaneous emission geometrically and turns time-resolved superradiance into a
-      probe of microscopic optical dipole–dipole interactions.
+      collective spontaneous emission geometrically, probes microscopic optical dipole–dipole
+      interactions via superradiance, and reconstructs ensemble dynamics from dispersive slow light.
     papers:
       - ji2023superradiant
+      - wang2022imaging
       - he2020geometric
     talks: []
 
@@ -194,44 +179,29 @@ nodes:
       - '2026-08-28'
       - '2026-08-25'
 
-# Directed connections (arranged so the 2–4–3 layout has zero edge crossings).
-# kind: 'flow' (direct technical/physical enablement) | 'bridge' (conceptual/theoretical link)
+# Directed connections (arranged so the 2–3–3 layout has zero edge crossings).
+# kind: 'flow' (direct technical/physical enablement) | 'bridge' (conceptual/theoretical correspondence)
 edges:
   - from: waveforms
     to: matter-wave
     kind: flow
     label: Shaped ns/ps optical waveforms drive fast, low-loss Raman & two-photon gates
 
+  - from: rearrangements
+    to: matter-wave
+    kind: bridge
+    shortLabel: SU(2) ↔ U(N)
+    label: 'Unitary synthesis from constrained operations: composite SU(2) pulses ↔ U(N) superlattice modes'
+
+  - from: rearrangements
+    to: cooling
+    kind: flow
+    label: Programmable superlattice control & low-defect fermionic state preparation
+
   - from: matter-wave
     to: collective
     kind: flow
     label: Sub-ns spin-wave phase imprinting steers superradiance & probes dipolar shifts
-
-  - from: matter-wave
-    to: rearrangements
-    kind: bridge
-    shortLabel: SU(2) → U(N)
-    label: 'Unitary synthesis from constrained operations: composite SU(2) pulses to U(N) lattice modes'
-
-  - from: microscopy
-    to: rearrangements
-    kind: flow
-    label: Optical superlattice addressing & site-resolved fluorescence readout
-
-  - from: microscopy
-    to: cooling
-    kind: flow
-    label: Site-resolved density & spin thermometry guides optical potential shaping
-
-  - from: microscopy
-    to: emery
-    kind: flow
-    label: 2D optical lattice combined with optically projected repulsive potentials
-
-  - from: rearrangements
-    to: stripes
-    kind: flow
-    label: Programmable coherent state preparation & superlattice manipulation of fermions
 
   - from: cooling
     to: stripes

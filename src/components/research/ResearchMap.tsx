@@ -223,8 +223,9 @@ export default function ResearchMap({ columns, nodes, edges, ongoingWorks, paper
 
       if (colU === colV) {
         // Vertical connection between stacked cards in the same column
+        const padStart = e.kind === 'bridge' ? 4 : 1;
         const x1 = rA.cx;
-        const y1 = rA.bottom + 1;
+        const y1 = rA.bottom + padStart;
         const x2 = rB.cx;
         const y2 = rB.top - 4;
         const d = `M ${x1.toFixed(1)} ${y1.toFixed(1)} L ${x2.toFixed(1)} ${y2.toFixed(1)}`;
@@ -238,7 +239,8 @@ export default function ResearchMap({ columns, nodes, edges, ongoingWorks, paper
         const inIdx = ins.indexOf(e);
         const inOffset = (inIdx - (ins.length - 1) / 2) * 10;
 
-        const x1 = rA.right + 1;
+        const padStart = e.kind === 'bridge' ? 4 : 1;
+        const x1 = rA.right + padStart;
         const y1 = rA.cy + outOffset;
         const x2 = rB.left - 4;
         const y2 = rB.cy + inOffset;
@@ -369,7 +371,7 @@ export default function ResearchMap({ columns, nodes, edges, ongoingWorks, paper
                   refY="4"
                   markerWidth="6"
                   markerHeight="6"
-                  orient="auto"
+                  orient="auto-start-reverse"
                 >
                   <path d="M 0.5 1.2 L 7 4 L 0.5 6.8 z" fill="var(--rm-bridge-color)" />
                 </marker>
@@ -395,7 +397,9 @@ export default function ResearchMap({ columns, nodes, edges, ongoingWorks, paper
                       transition: 'opacity 160ms ease',
                     }}
                   >
-                    <circle cx={ln.x1} cy={ln.y1} r={isActive ? 2.6 : 2} fill={stroke} />
+                    {!isBridge && (
+                      <circle cx={ln.x1} cy={ln.y1} r={isActive ? 2.6 : 2} fill={stroke} />
+                    )}
                     <path
                       d={ln.d}
                       fill="none"
@@ -403,6 +407,7 @@ export default function ResearchMap({ columns, nodes, edges, ongoingWorks, paper
                       strokeWidth={isActive ? 2.2 : 1.5}
                       strokeDasharray={isBridge ? '5 3.5' : undefined}
                       strokeLinecap="round"
+                      markerStart={isBridge ? 'url(#rm-arrow-bridge)' : undefined}
                       markerEnd={markerEnd}
                     />
                   </g>
@@ -508,7 +513,7 @@ export default function ResearchMap({ columns, nodes, edges, ongoingWorks, paper
                   return (
                     <div className="rm-edge-row" key={`in-${e.from}`}>
                       <span className={`rm-edge-badge ${e.kind === 'bridge' ? 'is-bridge' : ''}`}>
-                        ← {src?.title}
+                        {e.kind === 'bridge' ? '⇄' : '←'} {src?.title}
                       </span>
                       <span className="rm-edge-desc">{e.label}</span>
                     </div>
@@ -519,7 +524,7 @@ export default function ResearchMap({ columns, nodes, edges, ongoingWorks, paper
                   return (
                     <div className="rm-edge-row" key={`out-${e.to}`}>
                       <span className={`rm-edge-badge ${e.kind === 'bridge' ? 'is-bridge' : ''}`}>
-                        → {dst?.title}
+                        {e.kind === 'bridge' ? '⇄' : '→'} {dst?.title}
                       </span>
                       <span className="rm-edge-desc">{e.label}</span>
                     </div>
@@ -530,7 +535,7 @@ export default function ResearchMap({ columns, nodes, edges, ongoingWorks, paper
           ) : (
             <div className="rm-inspector-idle">
               <span className="rm-bridge-callout">
-                <strong>Key bridges across platforms:</strong> <em>SU(2) → U(N)</em> unitary
+                <strong>Key bridges across platforms:</strong> <em>SU(2) ↔ U(N)</em> unitary
                 synthesis (Composite Raman pulses ↔ Coherent lattice rearrangements) &nbsp;·&nbsp;{' '}
                 <em>3-band ↔ 1-band</em> cuprate physics (Emery model ↔ Doped t–t′ Hubbard)
               </span>
@@ -568,7 +573,8 @@ export default function ResearchMap({ columns, nodes, edges, ongoingWorks, paper
                       className={`rm-jump-pill ${e.kind === 'bridge' ? 'is-bridge' : ''}`}
                       onClick={() => setSelectedId(src.id)}
                     >
-                      ← Builds on: {src.title}
+                      {e.kind === 'bridge' ? '⇄ Bridge to: ' : '← Builds on: '}
+                      {src.title}
                     </button>
                   );
                 })}

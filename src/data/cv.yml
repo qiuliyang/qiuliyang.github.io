@@ -8,9 +8,10 @@ cv:
   website: https://qiuliyang.github.io
   summary: >-
     Experimental atomic physicist working on quantum simulation of the Fermi-Hubbard model
-    with a fermionic quantum gas microscope (FermiQP, MPQ). Background in coherent control of
-    atomic matter waves with nanosecond optical pulses, holographic imaging of cold atoms, and
-    tensor-network / quantum Monte Carlo numerics for comparing experiment with theory.
+    with a fermionic quantum gas microscope (FermiQP, MPQ). Research spans doped Mott insulators,
+    entropy-guided cooling and superlattice unitary control, multi-band lattice proposals, and
+    ultrafast/composite optical control of atomic matter waves, combined with tensor-network and
+    quantum Monte Carlo numerics.
   social_networks:
     - network: GitHub
       username: qiuliyang
@@ -45,7 +46,7 @@ cv:
         end_date: 2022-07
         highlights:
           - "Advisor: Saijun Wu"
-          - Nanosecond and picosecond optical control of atomic matter waves; holographic quantum gas microscopy
+          - Nanosecond and picosecond optical control of spinor matter waves; collective light–atom interactions
 
       - institution: Fudan University
         area: Physics

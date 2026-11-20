@@ -88,7 +88,7 @@ export const site = {
     orcid_id: '0000-0003-1370-9791' as string | undefined,
     /** Inspire HEP author ID */
     inspire_id: undefined as string | undefined,
-    researchgate_username: 'Liyang-Qiu' as string | undefined,
+    researchgate_username: undefined as string | undefined,
     arxiv_id: undefined as string | undefined,
     youtube_id: undefined as string | undefined,
     instagram_username: undefined as string | undefined,

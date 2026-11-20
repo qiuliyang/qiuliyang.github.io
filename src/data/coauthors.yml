@@ -1,6 +1,3 @@
 # Co-author display name overrides (LastName: { url, scholar, orcid }).
-# Used by the publications page to linkify author names.
-# Add entries here as needed; names without an entry are rendered as plain text.
-
-Bloch:
-  url: https://www.mpq.mpg.de/bloch
+# Intentionally empty so co-author names render as plain text without links.
+{}

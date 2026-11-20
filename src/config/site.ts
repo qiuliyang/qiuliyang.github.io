@@ -58,8 +58,7 @@ export const site = {
      */
     subtitle: `Postdoctoral researcher
       &nbsp;·&nbsp;
-      <a href="https://www.mpq.mpg.de/">Max Planck Institute of Quantum Optics</a>,
-      Garching`,
+      Max Planck Institute of Quantum Optics, Garching`,
 
     /**
      * Address block below profile photo.

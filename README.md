@@ -10,6 +10,7 @@ workflow in `.github/workflows/deploy.yml` on every push to `main`.
 |---|---|
 | Name, affiliation, social links, navigation, colours | `src/config/site.ts` |
 | Bio on the front page | `src/data/about.mdx` |
+| Research map (nodes, ongoing works, links to papers & talks) | `src/data/research-map.yml` |
 | Publications (BibTeX; `selected = {true}` shows on the front page) | `src/data/papers.bib` |
 | Archived preprint entries (not rendered) | `src/data/papers-archive.bib` |
 | Journal abbreviations, co-author links | `src/data/venues.yml`, `src/data/coauthors.yml` |

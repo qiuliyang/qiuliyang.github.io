@@ -118,6 +118,7 @@ export const site = {
      */
     items: [
       { label: 'about', href: '/' },
+      { label: 'research', href: '/research/' },
       { label: 'publications', href: '/publications/' },
       { label: 'invited talks', href: '/talks/' },
       { label: 'cv', href: '/cv/' },

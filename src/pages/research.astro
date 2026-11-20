@@ -1,0 +1,681 @@
+---
+import type {
+  MapColumn,
+  MapEdge,
+  MapNode,
+  OngoingWork,
+  SerializedPaper,
+  SerializedTalk,
+} from '@components/research/ResearchMap';
+import ResearchMap from '@components/research/ResearchMap';
+import { site } from '@config/site';
+import Page from '@layouts/Page.astro';
+import { type CoauthorMap, linkAuthors } from '@utils/authors';
+import {
+  getAuthors,
+  getBoolField,
+  getCleanBibtex,
+  getTitle,
+  getVenue,
+  getYear,
+  parseBibtex,
+} from '@utils/bibtex';
+import yaml from 'js-yaml';
+
+import coauthorsRaw from '../data/coauthors.yml?raw';
+import bibRaw from '../data/papers.bib?raw';
+import mapRaw from '../data/research-map.yml?raw';
+import talksRaw from '../data/talks.yml?raw';
+
+interface RawMapData {
+  columns: MapColumn[];
+  ongoingWorks: OngoingWork[];
+  nodes: MapNode[];
+  edges: MapEdge[];
+}
+
+interface RawTalk {
+  date: string;
+  title: string;
+  event?: string;
+  host?: string;
+  url?: string;
+  type?: 'conference' | 'workshop' | 'colloquium' | 'seminar';
+}
+
+const mapData = yaml.load(mapRaw, { schema: yaml.JSON_SCHEMA }) as RawMapData;
+const coauthors = (yaml.load(coauthorsRaw) ?? {}) as CoauthorMap;
+const authorLastName = site.publications.authorLastName ?? site.author.name.split(' ').pop() ?? '';
+
+const rawEntries = parseBibtex(bibRaw).sort((a, b) => getYear(b) - getYear(a));
+const papers: SerializedPaper[] = rawEntries.map((entry) => {
+  const authorStr = getAuthors(entry);
+  const authorList = authorStr ? authorStr.split(', ') : [];
+  return {
+    key: entry.key,
+    abbr: entry.fields.abbr,
+    title: getTitle(entry),
+    authors: linkAuthors(authorList, coauthors, authorLastName),
+    venue: getVenue(entry),
+    year: getYear(entry),
+    doi: entry.fields.doi,
+    arxiv: entry.fields.arxiv,
+    cleanBibtex: getBoolField(entry, 'bibtex_show') ? getCleanBibtex(entry) : undefined,
+  };
+});
+
+const typeLabel: Record<string, string> = {
+  conference: 'Conference',
+  workshop: 'Workshop',
+  colloquium: 'Colloquium',
+  seminar: 'Seminar',
+};
+
+const formatDate = (iso: string) =>
+  new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+
+const rawTalks = ((yaml.load(talksRaw, { schema: yaml.JSON_SCHEMA }) ?? []) as RawTalk[]).sort(
+  (a, b) => b.date.localeCompare(a.date),
+);
+
+const talks: SerializedTalk[] = rawTalks.map((t) => ({
+  date: t.date,
+  formattedDate: formatDate(t.date),
+  title: t.title,
+  type: t.type,
+  typeLabel: t.type ? (typeLabel[t.type] ?? t.type) : undefined,
+  event: t.event,
+  host: t.host,
+  url: t.url,
+}));
+---
+
+<Page
+  title="Research"
+  description={`Research overview and connections across coherent control and quantum simulation by ${site.author.name}`}
+>
+  <div class="post">
+    <header class="post-header">
+      <h1 class="post-title">research</h1>
+      <p class="post-description">
+        Coherent control and microscopic probing of quantum matter with cold atoms — connecting
+        ultrafast optical pulse engineering with fermionic quantum simulation in optical lattices.
+      </p>
+    </header>
+
+    <article>
+      <ResearchMap
+        client:load
+        columns={mapData.columns}
+        nodes={mapData.nodes}
+        edges={mapData.edges}
+        ongoingWorks={mapData.ongoingWorks}
+        papers={papers}
+        talks={talks}
+      />
+    </article>
+  </div>
+</Page>
+
+<style is:global>
+  :root {
+    --rm-edge-muted: rgba(31, 95, 168, 0.34);
+    --rm-bridge-color: #b45309;
+    --rm-bridge-muted: rgba(180, 83, 9, 0.52);
+    --rm-ongoing-bg: rgba(31, 95, 168, 0.08);
+    --rm-ongoing-border: rgba(31, 95, 168, 0.35);
+    --rm-surface: #fbfcfd;
+  }
+
+  html[data-theme='dark'] {
+    --rm-edge-muted: rgba(124, 184, 228, 0.36);
+    --rm-bridge-color: #f59e0b;
+    --rm-bridge-muted: rgba(245, 158, 11, 0.55);
+    --rm-ongoing-bg: rgba(124, 184, 228, 0.12);
+    --rm-ongoing-border: rgba(124, 184, 228, 0.4);
+    --rm-surface: #202327;
+  }
+
+  .rm-root {
+    margin-top: 0.75rem;
+  }
+
+  .rm-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    margin-bottom: 0.65rem;
+    font-size: 0.78rem;
+    color: var(--global-text-color-light);
+  }
+
+  .rm-legend {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.9rem;
+  }
+
+  .rm-legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .rm-legend-line {
+    display: inline-block;
+    width: 1.4rem;
+    height: 0;
+  }
+
+  .rm-legend-flow {
+    border-top: 2px solid var(--global-theme-color);
+  }
+
+  .rm-legend-bridge {
+    border-top: 2px dashed var(--rm-bridge-color);
+  }
+
+  .rm-canvas-frame {
+    border: 1px solid var(--global-divider-color);
+    border-radius: 0.6rem;
+    background-color: var(--rm-surface);
+    overflow: hidden;
+  }
+
+  .rm-canvas {
+    position: relative;
+    padding: 1.15rem 1.1rem 1.25rem;
+  }
+
+  .rm-svg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .rm-columns {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 4.5rem;
+    align-items: stretch;
+  }
+
+  .rm-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rm-col-header {
+    margin-bottom: 0.85rem;
+    padding-bottom: 0.45rem;
+    border-bottom: 1px solid var(--global-divider-color);
+  }
+
+  .rm-col-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--global-theme-color);
+  }
+
+  .rm-col-subtitle {
+    font-size: 0.71rem;
+    color: var(--global-text-color-light);
+    margin-top: 0.1rem;
+  }
+
+  .rm-col-cards {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.65rem;
+  }
+
+  .rm-node {
+    appearance: none;
+    width: 100%;
+    text-align: left;
+    background-color: var(--global-bg-color);
+    border: 1px solid var(--global-divider-color);
+    border-radius: 0.5rem;
+    padding: 0.68rem 0.78rem;
+    cursor: pointer;
+    transition:
+      border-color 150ms ease,
+      box-shadow 150ms ease,
+      opacity 160ms ease,
+      transform 150ms ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  }
+
+  .rm-node:hover,
+  .rm-node:focus-visible {
+    border-color: var(--global-theme-color);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+    outline: none;
+  }
+
+  .rm-node-selected {
+    border-color: var(--global-theme-color);
+    border-width: 1.5px;
+    box-shadow: 0 0 0 2px var(--rm-ongoing-bg);
+  }
+
+  .rm-node-dimmed {
+    opacity: 0.34;
+  }
+
+  .rm-node-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.35rem;
+  }
+
+  .rm-node-title {
+    font-size: 0.84rem;
+    font-weight: 650;
+    line-height: 1.28;
+    color: var(--global-text-color);
+  }
+
+  .rm-node-tagline {
+    margin-top: 0.28rem;
+    font-size: 0.73rem;
+    line-height: 1.38;
+    color: var(--global-text-color-light);
+  }
+
+  .rm-node-meta {
+    margin-top: 0.48rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .rm-chip {
+    display: inline-block;
+    font-size: 0.67rem;
+    font-weight: 500;
+    padding: 0.08rem 0.42rem;
+    border-radius: 999px;
+    background-color: var(--global-card-bg-color);
+    border: 1px solid var(--global-divider-color);
+    color: var(--global-text-color-light);
+  }
+
+  .rm-chip-ongoing {
+    background-color: var(--rm-ongoing-bg);
+    border-color: var(--rm-ongoing-border);
+    color: var(--global-theme-color);
+    font-weight: 600;
+  }
+
+  .rm-era {
+    margin-left: auto;
+    font-size: 0.66rem;
+    color: var(--global-text-color-light);
+    opacity: 0.85;
+  }
+
+  .rm-mobile-links {
+    display: none;
+  }
+
+  .rm-inspector {
+    border-top: 1px solid var(--global-divider-color);
+    background-color: var(--global-card-bg-color);
+    padding: 0.65rem 1.1rem;
+    font-size: 0.79rem;
+    min-height: 3.1rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .rm-inspector-idle {
+    color: var(--global-text-color-light);
+    line-height: 1.45;
+  }
+
+  .rm-bridge-callout strong {
+    color: var(--global-text-color);
+    font-weight: 600;
+  }
+
+  .rm-bridge-callout em {
+    color: var(--rm-bridge-color);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  .rm-inspector-active {
+    width: 100%;
+  }
+
+  .rm-inspector-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.32rem;
+    color: var(--global-text-color);
+  }
+
+  .rm-inspector-pin {
+    font-size: 0.72rem;
+    color: var(--global-theme-color);
+  }
+
+  .rm-inspector-edges {
+    display: flex;
+    flex-direction: column;
+    gap: 0.22rem;
+  }
+
+  .rm-edge-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.45rem;
+    line-height: 1.4;
+  }
+
+  .rm-edge-badge {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--global-theme-color);
+    white-space: nowrap;
+  }
+
+  .rm-edge-badge.is-bridge {
+    color: var(--rm-bridge-color);
+  }
+
+  .rm-edge-desc {
+    color: var(--global-text-color-light);
+    font-size: 0.76rem;
+  }
+
+  /* ─── Detail section below map ──────────────────────────────────────────── */
+
+  .rm-detail-anchor {
+    margin-top: 1.4rem;
+    scroll-margin-top: 4.5rem;
+  }
+
+  .rm-all-header {
+    font-size: 0.85rem;
+    color: var(--global-text-color-light);
+    padding-bottom: 0.25rem;
+  }
+
+  .rm-selected-panel {
+    border: 1px solid var(--global-divider-color);
+    border-left: 3px solid var(--global-theme-color);
+    border-radius: 0.45rem;
+    background-color: var(--global-card-bg-color);
+    padding: 0.95rem 1.15rem;
+  }
+
+  .rm-selected-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .rm-selected-kicker {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--global-theme-color);
+  }
+
+  .rm-selected-heading {
+    font-size: 1.15rem;
+    font-weight: 650;
+    margin: 0.1rem 0 0;
+    color: var(--global-text-color);
+  }
+
+  .rm-reset-btn {
+    appearance: none;
+    background: transparent;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 0.3rem;
+    padding: 0.22rem 0.6rem;
+    font-size: 0.76rem;
+    color: var(--global-text-color-light);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .rm-reset-btn:hover {
+    border-color: var(--global-theme-color);
+    color: var(--global-theme-color);
+  }
+
+  .rm-selected-summary {
+    margin: 0.55rem 0 0.75rem;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--global-text-color);
+  }
+
+  .rm-nav-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .rm-jump-pill {
+    appearance: none;
+    background-color: var(--global-bg-color);
+    border: 1px solid var(--global-divider-color);
+    border-radius: 999px;
+    padding: 0.18rem 0.62rem;
+    font-size: 0.74rem;
+    color: var(--global-theme-color);
+    cursor: pointer;
+    transition: border-color 140ms ease;
+  }
+
+  .rm-jump-pill.is-bridge {
+    color: var(--rm-bridge-color);
+    border-style: dashed;
+  }
+
+  .rm-jump-pill:hover {
+    border-color: currentColor;
+  }
+
+  .rm-section {
+    margin-top: 1.5rem;
+  }
+
+  .rm-section-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--global-text-color);
+    border-bottom: 1px solid var(--global-divider-color);
+    padding-bottom: 0.3rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .rm-work-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .rm-work-item {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 1rem;
+    padding: 0.75rem 0.4rem;
+    border-bottom: 1px solid var(--global-divider-color);
+    border-radius: 0.35rem;
+    transition: background-color 140ms ease;
+  }
+
+  .rm-work-item:hover {
+    background-color: var(--global-card-bg-color);
+  }
+
+  .rm-work-badge-col {
+    padding-top: 0.12rem;
+  }
+
+  .rm-badge-ongoing {
+    background-color: transparent !important;
+    color: var(--global-theme-color) !important;
+    border: 1px solid var(--global-theme-color);
+  }
+
+  .rm-work-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--global-text-color);
+    line-height: 1.4;
+  }
+
+  .rm-work-venue {
+    font-size: 0.84rem;
+    color: var(--global-text-color-light);
+    margin-top: 0.15rem;
+  }
+
+  .rm-work-desc {
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--global-text-color);
+    margin: 0.35rem 0 0.45rem;
+  }
+
+  .rm-links-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.35rem;
+  }
+
+  .rm-topic-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .rm-topic-tag {
+    appearance: none;
+    background: transparent;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 999px;
+    padding: 0.1rem 0.52rem;
+    font-size: 0.71rem;
+    color: var(--global-text-color-light);
+    cursor: pointer;
+    transition:
+      color 140ms ease,
+      border-color 140ms ease;
+  }
+
+  .rm-topic-tag:hover,
+  .rm-topic-tag.is-active {
+    border-color: var(--global-theme-color);
+    color: var(--global-theme-color);
+  }
+
+  .rm-talk-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .rm-talk-item {
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--global-divider-color);
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+  .rm-talk-date {
+    color: var(--global-text-color-light);
+    font-size: 0.8rem;
+    white-space: nowrap;
+    padding-top: 0.12rem;
+  }
+
+  .rm-talk-title {
+    font-weight: 600;
+    color: var(--global-text-color);
+  }
+
+  .rm-talk-venue {
+    color: var(--global-text-color-light);
+  }
+
+  .rm-talk-badge-conference,
+  .rm-talk-badge-workshop {
+    margin-right: 0.45rem;
+  }
+
+  .rm-talk-badge-seminar,
+  .rm-talk-badge-colloquium {
+    margin-right: 0.45rem;
+    background-color: transparent !important;
+    color: var(--global-text-color-light) !important;
+    border: 1px solid var(--global-text-color-light);
+  }
+
+  @media (max-width: 820px) {
+    .rm-svg,
+    .rm-legend {
+      display: none;
+    }
+
+    .rm-columns {
+      grid-template-columns: 1fr;
+      row-gap: 1.25rem;
+    }
+
+    .rm-col-cards {
+      gap: 0.65rem;
+    }
+
+    .rm-mobile-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-top: 0.45rem;
+      padding-top: 0.4rem;
+      border-top: 1px dashed var(--global-divider-color);
+    }
+
+    .rm-mobile-link-tag {
+      font-size: 0.68rem;
+      color: var(--global-theme-color);
+    }
+
+    .rm-work-item {
+      grid-template-columns: 1fr;
+      gap: 0.3rem;
+    }
+
+    .rm-talk-item {
+      grid-template-columns: 1fr;
+      gap: 0.2rem;
+    }
+  }
+</style>

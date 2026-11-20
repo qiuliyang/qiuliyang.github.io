@@ -206,8 +206,7 @@ export function getCleanBibtex(entry: BibEntry): string {
     .filter(([k]) => !BIBTEX_INTERNAL_FIELDS.has(k))
     .map(([k, v]) => {
       // Author contribution marks (*, †, \dagger …) are display-only; drop them from the citation.
-      const value =
-        k === 'author' ? v.replace(/\\d?dagger|[*†‡§]+(?=\s*,|\s+and\b|\s*$)/g, '') : v;
+      const value = k === 'author' ? v.replace(/\\d?dagger|[*†‡§]+(?=\s*,|\s+and\b|\s*$)/g, '') : v;
       return `  ${k} = {${value}}`;
     })
     .join(',\n');

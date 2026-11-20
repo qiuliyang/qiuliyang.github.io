@@ -57,19 +57,30 @@ const typeLabel: Record<string, string> = {
                   <div class="talk-date">{formatDate(t.date)}</div>
                   <div class="talk-body">
                     {t.type && (
-                      <span class={`badge-abbr badge-${t.type}`}>{typeLabel[t.type] ?? t.type}</span>
+                      <span class={`badge-abbr badge-${t.type}`}>
+                        {typeLabel[t.type] ?? t.type}
+                      </span>
                     )}
                     <span class="talk-title">{t.title}</span>
                     <br />
                     {(t.event || t.host) &&
                       (t.url ? (
-                        <a href={t.url} target="_blank" rel="noopener noreferrer" class="talk-venue">
+                        <a
+                          href={t.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="talk-venue"
+                        >
                           {/* kept on one line: a line break between expressions renders as a space before the comma */}
-                          {t.event && <em class="talk-event">{t.event}</em>}{t.event && t.host && ', '}{t.host}
+                          {t.event && <em class="talk-event">{t.event}</em>}
+                          {t.event && t.host && ', '}
+                          {t.host}
                         </a>
                       ) : (
                         <span class="talk-venue">
-                          {t.event && <em class="talk-event">{t.event}</em>}{t.event && t.host && ', '}{t.host}
+                          {t.event && <em class="talk-event">{t.event}</em>}
+                          {t.event && t.host && ', '}
+                          {t.host}
                         </span>
                       ))}
                   </div>

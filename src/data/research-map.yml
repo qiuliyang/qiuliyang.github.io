@@ -4,6 +4,8 @@
 # Paper metadata (title, authors, venue, DOI, arXiv) is pulled automatically from
 # src/data/papers.bib by citation key; talk metadata is pulled from src/data/talks.yml
 # by ISO date.
+#
+# Node `mode`: 'experiment' | 'theory' | 'theory-experiment'
 
 columns:
   - id: foundations
@@ -40,14 +42,15 @@ ongoingWorks:
     badge: Ongoing
     venue: FermiQP · Max Planck Institute of Quantum Optics
     description: >-
-      Using site-resolved density and spin diagnostics from the quantum gas microscope to guide
-      optical potential shaping and entropy redistribution, preparing low-entropy correlated
-      fermionic states.
+      Combine theoretical protocol design with site-resolved quantum gas microscope diagnostics to
+      shape optical potentials and redistribute entropy into reservoir regions, preparing
+      low-entropy correlated fermionic states.
 
 nodes:
   # ─── Column 1: Optical & Superlattice Control (2 nodes) ────────────────────
   - id: waveforms
     column: foundations
+    mode: experiment
     title: Optical Waveform & Pulse Shaping
     tagline: Sub-ns shaping, composite AOM & wideband EOM synthesis
     era: Fudan
@@ -63,6 +66,7 @@ nodes:
 
   - id: rearrangements
     column: foundations
+    mode: theory
     title: Coherent Lattice Rearrangements
     tagline: All-to-all U(N) unitaries via tunneling & local phase shifts
     era: MPQ
@@ -79,6 +83,7 @@ nodes:
   # ─── Column 2: State & Hamiltonian Engineering (3 nodes) ───────────────────
   - id: matter-wave
     column: engineering
+    mode: theory-experiment
     title: Composite & Ultrafast Matter-Wave Control
     tagline: Nanosecond spin-dependent kicks & composite biased rotations
     era: Fudan
@@ -101,13 +106,15 @@ nodes:
 
   - id: cooling
     column: engineering
+    mode: theory-experiment
     title: Entropy-Guided Cooling
     tagline: Potential shaping & entropy redistribution for low-T fermions
-    era: MPQ · Ongoing
+    era: MPQ
     summary: >-
       Reaching correlated regimes of the doped Fermi-Hubbard model requires overcoming entropy
-      bottlenecks in optical lattices. Site-resolved microscope thermometry guides tailored optical
-      potentials that partition entropy into reservoir regions to cool the central Hubbard system.
+      bottlenecks in optical lattices. Combining theoretical cooling protocols with site-resolved
+      microscope thermometry guides tailored optical potentials that partition entropy into
+      reservoir regions.
     ongoing:
       - cooling-work
     papers: []
@@ -117,6 +124,7 @@ nodes:
 
   - id: emery
     column: engineering
+    mode: theory
     title: Multi-Band Emery Model
     tagline: Patterned repulsive potentials for 3-band CuO₂ & nickelates
     era: MPQ
@@ -131,6 +139,7 @@ nodes:
   # ─── Column 3: Collective & Correlated Physics (3 nodes) ───────────────────
   - id: collective
     column: physics
+    mode: experiment
     title: Collective Light–Atom Interactions
     tagline: Geometric superradiance, dipolar shifts & slow-light probing
     era: Fudan
@@ -146,9 +155,10 @@ nodes:
 
   - id: stripes
     column: physics
+    mode: experiment
     title: Stripe Correlations in Doped Hubbard
     tagline: Site-resolved spin–charge stripes & magnetic polarons
-    era: MPQ · Ongoing
+    era: MPQ
     summary: >-
       Spin- and charge-resolved microscope snapshots reveal how mobile dopants dress and reorganize
       antiferromagnetic order in the 2D Fermi-Hubbard model, tracking emergent spin- and
@@ -164,9 +174,10 @@ nodes:
 
   - id: ttprime
     column: physics
+    mode: experiment
     title: Doped t–t′ Fermi-Hubbard Regimes
     tagline: Diagonal hopping t′, kinetic frustration & doping asymmetry
-    era: MPQ · Ongoing
+    era: MPQ
     summary: >-
       Next-nearest-neighbor hopping t′ breaks particle–hole symmetry in the Hubbard model,
       separating hole- and electron-doped regimes and introducing kinetic frustration that reshapes

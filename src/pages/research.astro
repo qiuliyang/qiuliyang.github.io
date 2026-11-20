@@ -125,6 +125,17 @@ const talks: SerializedTalk[] = rawTalks.map((t) => ({
     --rm-ongoing-bg: rgba(31, 95, 168, 0.08);
     --rm-ongoing-border: rgba(31, 95, 168, 0.35);
     --rm-surface: #fbfcfd;
+
+    /* Experiment vs Theory panel tokens */
+    --rm-exp-color: #1f5fa8;
+    --rm-exp-bg: #f6f9fe;
+    --rm-exp-border: rgba(31, 95, 168, 0.24);
+    --rm-exp-pill-bg: rgba(31, 95, 168, 0.1);
+
+    --rm-th-color: #6d3fc0;
+    --rm-th-bg: #faf7fe;
+    --rm-th-border: rgba(109, 63, 192, 0.24);
+    --rm-th-pill-bg: rgba(109, 63, 192, 0.1);
   }
 
   html[data-theme='dark'] {
@@ -134,6 +145,17 @@ const talks: SerializedTalk[] = rawTalks.map((t) => ({
     --rm-ongoing-bg: rgba(124, 184, 228, 0.12);
     --rm-ongoing-border: rgba(124, 184, 228, 0.4);
     --rm-surface: #202327;
+
+    /* Experiment vs Theory panel tokens (dark) */
+    --rm-exp-color: #7cb8e4;
+    --rm-exp-bg: #1e2630;
+    --rm-exp-border: rgba(124, 184, 228, 0.28);
+    --rm-exp-pill-bg: rgba(124, 184, 228, 0.14);
+
+    --rm-th-color: #b794f4;
+    --rm-th-bg: #252030;
+    --rm-th-border: rgba(183, 148, 244, 0.28);
+    --rm-th-pill-bg: rgba(183, 148, 244, 0.14);
   }
 
   .rm-root {
@@ -149,6 +171,52 @@ const talks: SerializedTalk[] = rawTalks.map((t) => ({
     margin-bottom: 0.65rem;
     font-size: 0.78rem;
     color: var(--global-text-color-light);
+  }
+
+  .rm-mode-legend {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .rm-mode-swatch {
+    display: inline-block;
+    width: 0.72rem;
+    height: 0.72rem;
+    border-radius: 0.18rem;
+  }
+
+  .rm-swatch-exp {
+    background-color: var(--rm-exp-bg);
+    border: 1px solid var(--rm-exp-border);
+    border-left: 3px solid var(--rm-exp-color);
+  }
+
+  .rm-swatch-th {
+    background-color: var(--rm-th-bg);
+    border: 1px solid var(--rm-th-border);
+    border-left: 3px solid var(--rm-th-color);
+  }
+
+  .rm-swatch-both {
+    background: linear-gradient(135deg, var(--rm-th-bg) 0%, var(--rm-exp-bg) 100%);
+    border: 1px solid var(--rm-exp-border);
+    border-left: 3px solid transparent;
+    background-origin: border-box;
+    box-shadow: inset 3px 0 0 var(--rm-th-color);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .rm-swatch-both::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 3px;
+    height: 50%;
+    background-color: var(--rm-exp-color);
   }
 
   .rm-legend {
@@ -239,13 +307,15 @@ const talks: SerializedTalk[] = rawTalks.map((t) => ({
   }
 
   .rm-node {
+    position: relative;
+    overflow: hidden;
     appearance: none;
     width: 100%;
     text-align: left;
     background-color: var(--global-bg-color);
     border: 1px solid var(--global-divider-color);
     border-radius: 0.5rem;
-    padding: 0.68rem 0.78rem;
+    padding: 0.68rem 0.78rem 0.68rem 0.92rem;
     cursor: pointer;
     transition:
       border-color 150ms ease,
@@ -253,6 +323,49 @@ const talks: SerializedTalk[] = rawTalks.map((t) => ({
       opacity 160ms ease,
       transform 150ms ease;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  }
+
+  .rm-node::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3.5px;
+    background: var(--rm-exp-color);
+  }
+
+  .rm-node-mode-experiment {
+    background-color: var(--rm-exp-bg);
+    border-color: var(--rm-exp-border);
+  }
+
+  .rm-node-mode-experiment::before {
+    background: var(--rm-exp-color);
+  }
+
+  .rm-node-mode-theory {
+    background-color: var(--rm-th-bg);
+    border-color: var(--rm-th-border);
+  }
+
+  .rm-node-mode-theory::before {
+    background: var(--rm-th-color);
+  }
+
+  .rm-node-mode-theory-experiment {
+    background: linear-gradient(135deg, var(--rm-th-bg) 0%, var(--rm-exp-bg) 100%);
+    border-color: var(--rm-th-border);
+  }
+
+  .rm-node-mode-theory-experiment::before {
+    background: linear-gradient(
+      180deg,
+      var(--rm-th-color) 0%,
+      var(--rm-th-color) 50%,
+      var(--rm-exp-color) 50%,
+      var(--rm-exp-color) 100%
+    );
   }
 
   .rm-node:hover,
@@ -263,10 +376,19 @@ const talks: SerializedTalk[] = rawTalks.map((t) => ({
     outline: none;
   }
 
+  .rm-node-mode-theory:hover,
+  .rm-node-mode-theory:focus-visible {
+    border-color: var(--rm-th-color);
+  }
+
   .rm-node-selected {
     border-color: var(--global-theme-color);
-    border-width: 1.5px;
     box-shadow: 0 0 0 2px var(--rm-ongoing-bg);
+  }
+
+  .rm-node-selected.rm-node-mode-theory {
+    border-color: var(--rm-th-color);
+    box-shadow: 0 0 0 2px var(--rm-th-pill-bg);
   }
 
   .rm-node-dimmed {
@@ -300,6 +422,38 @@ const talks: SerializedTalk[] = rawTalks.map((t) => ({
     flex-wrap: wrap;
     align-items: center;
     gap: 0.3rem;
+  }
+
+  .rm-mode-pill {
+    display: inline-block;
+    font-size: 0.66rem;
+    font-weight: 600;
+    padding: 0.07rem 0.42rem;
+    border-radius: 0.25rem;
+  }
+
+  .rm-mode-pill-experiment {
+    background-color: var(--rm-exp-pill-bg);
+    color: var(--rm-exp-color);
+  }
+
+  .rm-mode-pill-theory {
+    background-color: var(--rm-th-pill-bg);
+    color: var(--rm-th-color);
+  }
+
+  .rm-mode-pill-theory-experiment {
+    background: linear-gradient(90deg, var(--rm-th-pill-bg) 0%, var(--rm-exp-pill-bg) 100%);
+    color: var(--rm-th-color);
+    border: 1px solid var(--rm-exp-border);
+  }
+
+  .rm-kicker-mode-theory {
+    color: var(--rm-th-color);
+  }
+
+  .rm-kicker-mode-theory-experiment {
+    color: var(--rm-th-color);
   }
 
   .rm-chip {

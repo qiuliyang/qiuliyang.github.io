@@ -16,9 +16,12 @@ export interface OngoingWork {
   description: string;
 }
 
+export type NodeMode = 'experiment' | 'theory' | 'theory-experiment';
+
 export interface MapNode {
   id: string;
   column: string;
+  mode: NodeMode;
   title: string;
   tagline: string;
   era?: string;
@@ -75,6 +78,12 @@ interface ComputedLine {
   x1: number;
   y1: number;
 }
+
+const MODE_LABEL: Record<NodeMode, string> = {
+  experiment: 'Experiment',
+  theory: 'Theory',
+  'theory-experiment': 'Theory + Exp.',
+};
 
 const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
@@ -315,13 +324,24 @@ export default function ResearchMap({ columns, nodes, edges, ongoingWorks, paper
     <div className="rm-root">
       {/* Legend & interaction hint bar */}
       <div className="rm-toolbar">
-        <span className="rm-hint">
-          Hover to trace connections · Click a topic to filter works &amp; talks
-        </span>
+        <div className="rm-mode-legend" aria-label="Panel styles">
+          <span className="rm-legend-item">
+            <span className="rm-mode-swatch rm-swatch-exp" aria-hidden="true" />
+            Experiment
+          </span>
+          <span className="rm-legend-item">
+            <span className="rm-mode-swatch rm-swatch-th" aria-hidden="true" />
+            Theory
+          </span>
+          <span className="rm-legend-item">
+            <span className="rm-mode-swatch rm-swatch-both" aria-hidden="true" />
+            Theory + Exp.
+          </span>
+        </div>
         <div className="rm-legend" aria-hidden="true">
           <span className="rm-legend-item">
             <span className="rm-legend-line rm-legend-flow" />
-            Physical / technical progression
+            Progression
           </span>
           <span className="rm-legend-item">
             <span className="rm-legend-line rm-legend-bridge" />
@@ -445,6 +465,7 @@ export default function ResearchMap({ columns, nodes, edges, ongoingWorks, paper
                           }}
                           className={[
                             'rm-node',
+                            `rm-node-mode-${node.mode}`,
                             isSelected ? 'rm-node-selected' : '',
                             !isHighlighted ? 'rm-node-dimmed' : '',
                             isOngoing ? 'rm-node-ongoing' : '',
@@ -463,13 +484,16 @@ export default function ResearchMap({ columns, nodes, edges, ongoingWorks, paper
                           </div>
                           <div className="rm-node-tagline">{node.tagline}</div>
                           <div className="rm-node-meta">
+                            <span className={`rm-mode-pill rm-mode-pill-${node.mode}`}>
+                              {MODE_LABEL[node.mode]}
+                            </span>
                             {isOngoing && <span className="rm-chip rm-chip-ongoing">Ongoing</span>}
                             {paperCount > 0 && (
                               <span className="rm-chip">
                                 {paperCount} {paperCount === 1 ? 'paper' : 'papers'}
                               </span>
                             )}
-                            {talkCount > 0 && paperCount === 0 && (
+                            {talkCount > 0 && paperCount === 0 && !isOngoing && (
                               <span className="rm-chip">
                                 {talkCount} {talkCount === 1 ? 'talk' : 'talks'}
                               </span>
@@ -552,6 +576,10 @@ export default function ResearchMap({ columns, nodes, edges, ongoingWorks, paper
               <div>
                 <div className="rm-selected-kicker">
                   {columns.find((c) => c.id === selectedNode.column)?.title}
+                  {' · '}
+                  <span className={`rm-kicker-mode rm-kicker-mode-${selectedNode.mode}`}>
+                    {MODE_LABEL[selectedNode.mode]}
+                  </span>
                 </div>
                 <h2 className="rm-selected-heading">{selectedNode.title}</h2>
               </div>

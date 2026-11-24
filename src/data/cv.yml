@@ -57,8 +57,6 @@ cv:
 
     skills:
       - label: Experiment
-        details: Ultracold atoms, optical lattices, quantum gas microscopy, optical arbitrary waveform generation, composite Raman control, matter-wave interferometry
+        details: Ultracold atoms, optical lattices, quantum gas microscopy, pulse shaping, matter-wave interferometry, holographic imaging
       - label: Numerics
-        details: Julia, Python, DMRG and tensor networks, determinant QMC, exact diagonalization
-      - label: Languages
-        details: Chinese (native), English (fluent)
+        details: Julia, Python, tensor networks, determinant QMC, neural quantum states (NQS), exact diagonalization

@@ -7,11 +7,12 @@ cv:
   email: liyang.qiu@mpq.mpg.de
   website: https://qiuliyang.github.io
   summary: >-
-    Experimental atomic physicist working on quantum simulation of the Fermi-Hubbard model
-    with a fermionic quantum gas microscope (FermiQP, MPQ). Research spans doped Mott insulators,
-    entropy-guided cooling and superlattice unitary control, multi-band lattice proposals, and
-    ultrafast/composite optical control of atomic matter waves, combined with tensor-network and
-    quantum Monte Carlo numerics.
+    Experimental atomic physicist studying strongly correlated fermions and programmable quantum
+    dynamics with a lithium quantum gas microscope (FermiQP, MPQ). Research focuses on the
+    competition between stripes and d-wave pairing in the doped Fermi-Hubbard model and
+    multi-orbital Emery models relevant to cuprates and nickelates, combined with tensor-network
+    and quantum Monte Carlo simulations to benchmark data, guide experimental regimes, and design
+    microscopic observables.
   social_networks:
     - network: GitHub
       username: qiuliyang
@@ -26,9 +27,9 @@ cv:
         start_date: 2023-05
         end_date: present
         highlights:
-          - "FermiQP: a fermionic quantum processor based on a quantum gas microscope"
-          - Fermi-Hubbard quantum simulation with lithium atoms in optical lattices
-          - Coherent control of atoms in optical superlattices; three-band (Emery) model proposals
+          - "FermiQP: spin- and charge-resolved lithium quantum gas microscopy in optical lattices"
+          - Emergent correlations in the doped Fermi-Hubbard model and multi-orbital Emery model proposals
+          - Coherent superlattice rearrangements, entropy-guided cooling, and tensor-network / QMC numerics
 
       - company: Fudan University
         position: Postdoctoral research associate
@@ -36,7 +37,7 @@ cv:
         start_date: 2022-09
         end_date: 2023-05
         highlights:
-          - Composite Raman pulses for high-fidelity spinor matter-wave control
+          - Composite biased Raman rotations for high-fidelity spinor matter-wave control
 
     education:
       - institution: Fudan University
@@ -45,8 +46,8 @@ cv:
         start_date: 2016-09
         end_date: 2022-07
         highlights:
-          - "Advisor: Saijun Wu"
-          - Nanosecond and picosecond optical control of spinor matter waves; collective light–atom interactions
+          - "Advisor: Saijun Wu (Ultracontrol Lab)"
+          - Nanosecond and picosecond optical arbitrary waveform generation for Raman matter-wave interferometry and many-body quantum optics
 
       - institution: Fudan University
         area: Physics
@@ -56,7 +57,7 @@ cv:
 
     skills:
       - label: Experiment
-        details: Ultracold atoms, optical lattices, quantum gas microscopy, pulse shaping, Raman control, holographic imaging
+        details: Ultracold atoms, optical lattices, quantum gas microscopy, optical arbitrary waveform generation, composite Raman control, matter-wave interferometry
       - label: Numerics
         details: Julia, Python, DMRG and tensor networks, determinant QMC, exact diagonalization
       - label: Languages
